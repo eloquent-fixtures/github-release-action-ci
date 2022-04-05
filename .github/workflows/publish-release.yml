@@ -1,0 +1,14 @@
+name: Publish release
+on:
+  push:
+    tags:
+    - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Publish release
+      uses: eloquent/github-release-action@0fb7bbf08d9536dfdf235145e7b5c997dde346be
