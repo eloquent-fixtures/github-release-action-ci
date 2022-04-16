@@ -1,0 +1,14 @@
+name: ci-2176116727.70.1
+on:
+  push:
+    tags:
+    - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Publish release
+      uses: eloquent/github-release-action@a54d686ea48df6b9ee3ff27aa3a4e5df4b8f9627
