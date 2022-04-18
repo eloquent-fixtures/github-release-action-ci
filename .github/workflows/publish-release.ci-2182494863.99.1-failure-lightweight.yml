@@ -1,0 +1,15 @@
+name: ci-2182494863.99.1-failure-lightweight
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@d877c785887024ec883f4a0bb0e86bad2fe8de49
