@@ -1,0 +1,15 @@
+name: ci-manual.4vdqhiwawz-success-stable
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@7629149512d9eb9635b45c65f59798e3e5da0ab2
