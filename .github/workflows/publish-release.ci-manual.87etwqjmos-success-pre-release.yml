@@ -1,0 +1,14 @@
+name: ci-manual.87etwqjmos-success-pre-release
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: eloquent/github-release-action@main
