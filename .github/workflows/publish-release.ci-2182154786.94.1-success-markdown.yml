@@ -1,0 +1,15 @@
+name: ci-2182154786.94.1-success-markdown
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@f866f389ae9b1d15c6475abee3bbcb6c6a3d3e3e
