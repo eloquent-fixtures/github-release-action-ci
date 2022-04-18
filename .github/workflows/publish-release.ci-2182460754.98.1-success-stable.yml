@@ -1,0 +1,15 @@
+name: ci-2182460754.98.1-success-stable
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@c2db31e09f8cb161833071c592bdb0b868844536
