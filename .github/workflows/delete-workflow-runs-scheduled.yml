@@ -1,0 +1,14 @@
+name: Delete workflow runs (scheduled)
+on:
+  schedule:
+  - cron: 0 14 * * 0 # Sunday 2PM UTC = Monday 12AM AEST
+jobs:
+  ci:
+    name: Delete workflow runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          retain_days: 7
+          keep_minimum_runs: 0
