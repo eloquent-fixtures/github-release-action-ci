@@ -1,0 +1,16 @@
+name: ci-manual.rr02fyhh0i-success-draft
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: eloquent/github-release-action@8d216c9
+        with:
+          draft: true
