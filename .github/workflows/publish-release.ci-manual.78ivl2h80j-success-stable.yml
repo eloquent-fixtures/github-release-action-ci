@@ -1,0 +1,15 @@
+name: ci-manual.78ivl2h80j-success-stable
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@b08fa8d286d014de82298f379bc167597655abc1
