@@ -1,0 +1,17 @@
+name: ci-manual.rz2f55is71-success-draft
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@e3838d0bff3be4af2d351ccdd46106bbfda3b00d
+        with:
+          draft: true
