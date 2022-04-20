@@ -1,0 +1,16 @@
+name: ci-manual.ow9ipjj7zq-success-happy-path
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@e8f78f97bf173a5d3416ffb07739dab46986fe04
+        with: {}
