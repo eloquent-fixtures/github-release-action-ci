@@ -1,0 +1,3 @@
+assets:
+  - path: files/text/file-a.txt
+  - path: files/json/file-b.json
