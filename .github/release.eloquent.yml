@@ -1,0 +1,5 @@
+assets:
+  - path: assets/text/file-a.txt
+  - path: assets/json/file-b.json
+    name: name-b
+    label: label-b
