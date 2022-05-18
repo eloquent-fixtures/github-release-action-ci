@@ -1,0 +1,16 @@
+name: ci-2345854500.131.1-happy-path
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@85e10e96795d8210fbc1fe6aa157c9f14d3d65a8
+        with: {}
