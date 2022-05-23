@@ -1,0 +1,16 @@
+name: ci-2370835134.150.1-pre-release
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@71d2dcdd8fd3daedf04b47398f977cc2b31680e8
+        with: {}
