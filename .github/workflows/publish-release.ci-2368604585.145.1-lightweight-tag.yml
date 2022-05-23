@@ -1,0 +1,16 @@
+name: ci-2368604585.145.1-lightweight-tag
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@ccd9bdbb5c8bb00538ea7fec5b4077b5c360a464
+        with: {}
