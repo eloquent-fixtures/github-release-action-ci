@@ -1,0 +1,17 @@
+name: ci-2371650172.156.1-draft
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@12224043ceca8b6fe8259f7ceb08e6c40af088db
+        with:
+          draft: true
