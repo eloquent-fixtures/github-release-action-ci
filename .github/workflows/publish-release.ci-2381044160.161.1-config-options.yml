@@ -1,0 +1,16 @@
+name: ci-2381044160.161.1-config-options
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@827e2d5c9c986edd1ed5a7f19956d71f4e6b0387
+        with: {}
