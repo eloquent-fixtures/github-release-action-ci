@@ -1,0 +1,20 @@
+name: ci-2384198171.163.1-happy-path
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@02ab68b362ba916680eaa47ad117f4ccd1954398
+        with:
+          discussionCategory: releases
+          discussionReactions: +1,-1,laugh,hooray,confused,heart,rocket,eyes
+          generateReleaseNotes: 'true'
+          reactions: +1,laugh,hooray,heart,rocket,eyes
