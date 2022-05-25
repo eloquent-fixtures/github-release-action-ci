@@ -1,0 +1,25 @@
+name: ci-2384437743.166.1-happy-path
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@0de2183e3623a9f9a409f69ec8bbe77f9b087543
+        with:
+          discussionCategory: releases
+          discussionReactions: +1,-1,laugh,hooray,confused,heart,rocket,eyes
+          generateReleaseNotes: 'true'
+          reactions: +1,laugh,hooray,heart,rocket,eyes
+        id: publishRelease
+      - name: Expose outputs
+        env:
+          PUBLISH_OPTIONS_OUTPUTS: ${{ toJSON(steps.publishRelease.outputs) }}
+        run: echo ::notice title=Outputs::$PUBLISH_OPTIONS_OUTPUTS
