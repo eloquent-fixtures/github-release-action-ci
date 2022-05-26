@@ -1,0 +1,21 @@
+name: ci-2390341407.169.1-lightweight-tag
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@c293c060995f579468264b3ccddd98413cf28007
+        with: {}
+        id: publishRelease
+      - name: Expose outputs
+        env:
+          PUBLISH_OPTIONS_OUTPUTS: ${{ toJSON(steps.publishRelease.outputs) }}
+        run: echo ::notice title=Outputs::$PUBLISH_OPTIONS_OUTPUTS
