@@ -1,0 +1,21 @@
+name: ci-2390445434.171.1-config-options
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@adf410a87443f320ae1a6f7e316fca645cf9f2e0
+        with: {}
+        id: publishRelease
+      - name: Expose outputs
+        env:
+          PUBLISH_OPTIONS_OUTPUTS: ${{ toJSON(steps.publishRelease.outputs) }}
+        run: echo ::notice title=Outputs::$PUBLISH_OPTIONS_OUTPUTS
