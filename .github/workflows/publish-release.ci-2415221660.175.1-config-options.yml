@@ -1,0 +1,84 @@
+name: ci-2415221660.175.1-config-options
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@c7ba3428a3b3725646189231370a1f1aa0f0d7d4
+        with: {}
+        id: publishRelease
+      - name: Expose outputs
+        env:
+          PUBLISH_RELEASE_OUTPUT_assets: ${{ toJSON(steps.publishRelease.outputs.assets) }}
+          PUBLISH_RELEASE_OUTPUT_discussionId: ${{ toJSON(steps.publishRelease.outputs.discussionId) }}
+          PUBLISH_RELEASE_OUTPUT_discussionNumber: ${{ toJSON(steps.publishRelease.outputs.discussionNumber) }}
+          PUBLISH_RELEASE_OUTPUT_discussionUrl: ${{ toJSON(steps.publishRelease.outputs.discussionUrl) }}
+          PUBLISH_RELEASE_OUTPUT_generatedReleaseNotes: ${{ toJSON(steps.publishRelease.outputs.generatedReleaseNotes) }}
+          PUBLISH_RELEASE_OUTPUT_releaseBody: ${{ toJSON(steps.publishRelease.outputs.releaseBody) }}
+          PUBLISH_RELEASE_OUTPUT_releaseId: ${{ toJSON(steps.publishRelease.outputs.releaseId) }}
+          PUBLISH_RELEASE_OUTPUT_releaseName: ${{ toJSON(steps.publishRelease.outputs.releaseName) }}
+          PUBLISH_RELEASE_OUTPUT_releaseUploadUrl: ${{ toJSON(steps.publishRelease.outputs.releaseUploadUrl) }}
+          PUBLISH_RELEASE_OUTPUT_releaseUrl: ${{ toJSON(steps.publishRelease.outputs.releaseUrl) }}
+          PUBLISH_RELEASE_OUTPUT_releaseWasCreated: ${{ toJSON(steps.publishRelease.outputs.releaseWasCreated) }}
+          PUBLISH_RELEASE_OUTPUT_tagBody: ${{ toJSON(steps.publishRelease.outputs.tagBody) }}
+          PUBLISH_RELEASE_OUTPUT_tagBodyRendered: ${{ toJSON(steps.publishRelease.outputs.tagBodyRendered) }}
+          PUBLISH_RELEASE_OUTPUT_tagIsSemVer: ${{ toJSON(steps.publishRelease.outputs.tagIsSemVer) }}
+          PUBLISH_RELEASE_OUTPUT_tagIsStable: ${{ toJSON(steps.publishRelease.outputs.tagIsStable) }}
+          PUBLISH_RELEASE_OUTPUT_tagName: ${{ toJSON(steps.publishRelease.outputs.tagName) }}
+          PUBLISH_RELEASE_OUTPUT_tagSubject: ${{ toJSON(steps.publishRelease.outputs.tagSubject) }}
+        run: >-
+          echo ::notice title=outputs.assets::$PUBLISH_RELEASE_OUTPUT_assets
+
+          echo ::notice
+          title=outputs.discussionId::$PUBLISH_RELEASE_OUTPUT_discussionId
+
+          echo ::notice
+          title=outputs.discussionNumber::$PUBLISH_RELEASE_OUTPUT_discussionNumber
+
+          echo ::notice
+          title=outputs.discussionUrl::$PUBLISH_RELEASE_OUTPUT_discussionUrl
+
+          echo ::notice
+          title=outputs.generatedReleaseNotes::$PUBLISH_RELEASE_OUTPUT_generatedReleaseNotes
+
+          echo ::notice
+          title=outputs.releaseBody::$PUBLISH_RELEASE_OUTPUT_releaseBody
+
+          echo ::notice
+          title=outputs.releaseId::$PUBLISH_RELEASE_OUTPUT_releaseId
+
+          echo ::notice
+          title=outputs.releaseName::$PUBLISH_RELEASE_OUTPUT_releaseName
+
+          echo ::notice
+          title=outputs.releaseUploadUrl::$PUBLISH_RELEASE_OUTPUT_releaseUploadUrl
+
+          echo ::notice
+          title=outputs.releaseUrl::$PUBLISH_RELEASE_OUTPUT_releaseUrl
+
+          echo ::notice
+          title=outputs.releaseWasCreated::$PUBLISH_RELEASE_OUTPUT_releaseWasCreated
+
+          echo ::notice title=outputs.tagBody::$PUBLISH_RELEASE_OUTPUT_tagBody
+
+          echo ::notice
+          title=outputs.tagBodyRendered::$PUBLISH_RELEASE_OUTPUT_tagBodyRendered
+
+          echo ::notice
+          title=outputs.tagIsSemVer::$PUBLISH_RELEASE_OUTPUT_tagIsSemVer
+
+          echo ::notice
+          title=outputs.tagIsStable::$PUBLISH_RELEASE_OUTPUT_tagIsStable
+
+          echo ::notice title=outputs.tagName::$PUBLISH_RELEASE_OUTPUT_tagName
+
+          echo ::notice
+          title=outputs.tagSubject::$PUBLISH_RELEASE_OUTPUT_tagSubject
