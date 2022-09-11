@@ -1,0 +1,103 @@
+name: ci-3030616142.285.1-happy-path
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Publish release
+        uses: >-
+          eloquent/github-release-action@eaf62c42429be299f63d02a05447f20114b235eb
+        with:
+          discussionCategory: releases
+          discussionReactions: +1,-1,laugh,hooray,confused,heart,rocket,eyes
+          generateReleaseNotes: 'true'
+          reactions: +1,laugh,hooray,heart,rocket,eyes
+        id: publishRelease
+      - name: Expose outputs.ASSETS
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.ASSETS) }}
+        run: echo ::notice title=outputs.ASSETS::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.DISCUSSION_ID
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.DISCUSSION_ID) }}
+        run: echo ::notice title=outputs.DISCUSSION_ID::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.DISCUSSION_NUMBER
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.DISCUSSION_NUMBER) }}
+        run: echo ::notice title=outputs.DISCUSSION_NUMBER::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.DISCUSSION_URL
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.DISCUSSION_URL) }}
+        run: echo ::notice title=outputs.DISCUSSION_URL::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.GENERATED_RELEASE_NOTES
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.GENERATED_RELEASE_NOTES) }}
+        run: >-
+          echo ::notice
+          title=outputs.GENERATED_RELEASE_NOTES::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_BODY
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_BODY) }}
+        run: echo ::notice title=outputs.RELEASE_BODY::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_ID
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_ID) }}
+        run: echo ::notice title=outputs.RELEASE_ID::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_NAME
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_NAME) }}
+        run: echo ::notice title=outputs.RELEASE_NAME::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_UPLOAD_URL
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_UPLOAD_URL) }}
+        run: >-
+          echo ::notice
+          title=outputs.RELEASE_UPLOAD_URL::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_URL
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_URL) }}
+        run: echo ::notice title=outputs.RELEASE_URL::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.RELEASE_WAS_CREATED
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.RELEASE_WAS_CREATED) }}
+        run: >-
+          echo ::notice
+          title=outputs.RELEASE_WAS_CREATED::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAGGER_AVATAR_URL
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAGGER_AVATAR_URL) }}
+        run: echo ::notice title=outputs.TAGGER_AVATAR_URL::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAGGER_LOGIN
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAGGER_LOGIN) }}
+        run: echo ::notice title=outputs.TAGGER_LOGIN::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_BODY
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_BODY) }}
+        run: echo ::notice title=outputs.TAG_BODY::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_BODY_RENDERED
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_BODY_RENDERED) }}
+        run: echo ::notice title=outputs.TAG_BODY_RENDERED::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_IS_SEM_VER
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_IS_SEM_VER) }}
+        run: echo ::notice title=outputs.TAG_IS_SEM_VER::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_IS_STABLE
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_IS_STABLE) }}
+        run: echo ::notice title=outputs.TAG_IS_STABLE::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_NAME
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_NAME) }}
+        run: echo ::notice title=outputs.TAG_NAME::$PUBLISH_RELEASE_OUTPUT
+      - name: Expose outputs.TAG_SUBJECT
+        env:
+          PUBLISH_RELEASE_OUTPUT: ${{ toJSON(steps.publishRelease.outputs.TAG_SUBJECT) }}
+        run: echo ::notice title=outputs.TAG_SUBJECT::$PUBLISH_RELEASE_OUTPUT
